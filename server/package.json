@@ -1,0 +1,42 @@
+{
+  "name": "devverse-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "make-admin": "node scripts/makeAdmin.js",
+    "seed": "node seed/seed.js",
+    "test": "node --test",
+    "smoke": "node scripts/smoke.js",
+    "recount": "node scripts/maintenance.js recount",
+    "orphan-images": "node scripts/maintenance.js orphan-images"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cloudinary": "^2.11.0",
+    "compression": "^1.8.2",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-rate-limit": "^7.4.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.7.0",
+    "mongoose": "^8.7.2",
+    "morgan": "^1.10.0",
+    "multer": "^2.4.0",
+    "sanitize-html": "^2.18.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

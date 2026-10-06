@@ -1,0 +1,26 @@
+{
+  "name": "devverse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DevVerse - Write. Build. Share.",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client",
+    "build": "npm run build --prefix client",
+    "seed": "npm run seed --prefix server",
+    "test": "npm test --prefix server",
+    "smoke": "npm run smoke --prefix server",
+    "recount": "npm run recount --prefix server",
+    "audit:server": "npm audit --prefix server",
+    "audit:client": "npm audit --prefix client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "dependencies": {
+    "cloudinary": "^2.11.0",
+    "mongodb": "^7.7.0"
+  }
+}

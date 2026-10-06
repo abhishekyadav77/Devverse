@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.env
+.env.*
+*.log
+.DS_Store
+server/uploads/*
+!server/uploads/.gitkeep
+.vscode/
+.idea/
+coverage/
+.vercel/
