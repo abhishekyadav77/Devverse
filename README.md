@@ -1,178 +1,676 @@
-# DevVerse
+# ⚡ DevVerse
 
-**Write. Build. Share.** A full-stack blogging platform for developers, built with React, Express and MongoDB.
+### A Developer-Focused Blogging & Community Platform
 
-## Features
+<p align="center">
+  <b>Learn · Build · Share · Connect</b>
+</p>
 
-**Readers:** browse and search articles, categories, tags and author pages; read with comments; share links.
-**Writers:** register, write in a rich editor (headings, lists, links, images, tables, code blocks, quotes), autosaved drafts, preview, scheduling, image uploads, like, bookmark, comment and reply, follow authors, notifications, a personal dashboard.
-**Admins:** platform statistics and charts, user suspension, post hiding and deletion, comment moderation, category and tag management.
-**Platform:** SEO (meta tags, canonical URLs, Open Graph, schema.org, sitemap, robots), dark mode, responsive layouts from 320px up, lazy-loaded routes and paginated APIs.
+<p align="center">
+  DevVerse is a full-stack developer blogging and community platform built with the MERN stack.
+</p>
 
-## Tech stack
+<p align="center">
+  <a href="https://github.com/abhishekyadav77/devverse">
+    <img src="https://img.shields.io/badge/MERN-Stack-3DDC84?style=for-the-badge&logo=mongodb&logoColor=white" alt="MERN Stack" />
+  </a>
+  <img src="https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black" alt="React" />
+  <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+</p>
 
-| Layer | Tools |
-|---|---|
-| Frontend | React 18, Vite, React Router, Tailwind CSS, Axios, React Hook Form, Framer Motion, Lucide, TipTap |
-| Backend | Node.js 20+, Express, Mongoose, JWT (HTTP-only cookie), bcryptjs, Zod, Multer, Helmet |
-| Data and media | MongoDB Atlas, Cloudinary |
-| Hosting | Vercel (client), Render or Railway (API) |
+---
 
-## Screenshots
+## 🌐 About DevVerse
 
-Add your own after running the seed script:
+**DevVerse** is a developer-focused blogging and community platform built with the **MERN stack**.
 
-| Home | Article | Editor | Admin |
-|---|---|---|---|
-| `docs/screenshots/home.png` | `docs/screenshots/article.png` | `docs/screenshots/editor.png` | `docs/screenshots/admin.png` |
+The idea behind DevVerse is simple:
 
-## Architecture
+> **Developers learn better when they share what they build, what they learn, and what they experience.**
 
+DevVerse provides a modern space where developers can discover technical content, write and publish articles, share experiences, interact with other developers, and grow together as a community.
+
+The project focuses on real-world full-stack development, including:
+
+- Frontend architecture
+- Backend REST APIs
+- Authentication & authorization
+- Database design
+- Community features
+- Security
+- SEO
+- Testing
+- Cloud deployment
+
+---
+
+## ✨ Features
+
+### 📝 Blogging
+
+- Create blog posts
+- Edit posts
+- Save drafts
+- Publish posts
+- Unpublish posts
+- Delete posts
+- Rich-text blog editor
+- Categories
+- Tags
+- Author preview
+- Public article pages
+- Search and content discovery
+
+### 👥 Developer Community
+
+- Like posts
+- Bookmark posts
+- Comment on posts
+- Reply to comments
+- Follow developers
+- Unfollow developers
+- Developer profiles
+- Notifications
+- Search developers and content
+
+### 🔐 Authentication & Authorization
+
+- User registration
+- User login/logout
+- Session management
+- Protected routes
+- Role-based authorization
+- Admin dashboard
+- Admin-only APIs
+- Permission checks
+- Protected user actions
+
+### 🛡️ Security
+
+DevVerse includes several security-focused features:
+
+- CSRF protection
+- CORS configuration
+- Foreign-origin request protection
+- NoSQL operator protection
+- Input validation
+- Authentication checks
+- Authorization checks
+- Protected admin endpoints
+- Environment-based secrets
+- Production-oriented API protection
+
+### 🔎 SEO
+
+DevVerse also includes SEO and crawler-friendly functionality:
+
+- `robots.txt`
+- `sitemap.xml`
+- Open Graph metadata
+- JSON-LD structured data
+- Crawler-friendly pages
+- SEO-friendly article pages
+- Metadata for shared content
+
+---
+
+# 🧰 Tech Stack
+
+## Frontend
+
+- React
+- Vite
+- React Router
+- Tailwind CSS
+- Framer Motion
+- Tiptap
+- Lucide React
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- REST APIs
+- Authentication & Sessions
+- CORS
+- Morgan
+- Security Middleware
+
+## Cloud & Deployment
+
+- MongoDB Atlas
+- Cloudinary
+- Vercel
+- Render
+- GitHub
+
+---
+
+# 🏗️ Architecture
+
+```text
+                         DEVVERSE
+                            │
+                            ▼
+                  ┌──────────────────┐
+                  │  React + Vite    │
+                  │    Frontend      │
+                  └────────┬─────────┘
+                           │
+                        REST API
+                           │
+                           ▼
+                  ┌──────────────────┐
+                  │ Express + Node.js│
+                  │     Backend      │
+                  └───────┬────┬─────┘
+                          │    │
+                 ┌────────┘    └────────┐
+                 ▼                      ▼
+          ┌──────────────┐       ┌──────────────┐
+          │   MongoDB    │       │  Cloudinary  │
+          │    Atlas     │       │    Media     │
+          └──────────────┘       └──────────────┘
 ```
-Browser (React SPA, Vercel)
-   |  Axios, cookies
-   v
-Express API (Render/Railway)
-   helmet > cors > compression > size limits > sanitize > rate limits > CSRF guard
-   > routes > validators > controllers > services > models > error handler
-   |-- MongoDB Atlas (Mongoose)
-   '-- Cloudinary (image storage and CDN)
-```
 
-- **Auth:** a JWT in an HTTP-only, Secure cookie. `/auth/me` restores the session on load.
-- **Authorization:** always enforced on the server (`protect`, `authorize('admin')`, ownership checks). The client's route guards are only for navigation.
-- **Relationships:** likes, bookmarks, follows and comment likes are separate collections with unique indexes. Counters on posts and users are a cache of those rows and can be repaired with `npm run recount`.
-- **Scheduling:** a scheduled post is `published` with a future `publishedAt`. Public queries only return posts whose date has passed, so no background worker is needed.
-- **SEO for a single-page app:** the API serves a small HTML page per article (`/seo/blog/:slug`) and a Vercel rewrite sends only crawlers (by User-Agent) to it.
+---
 
-## Folder structure
+# 📂 Project Structure
 
-```
+```text
 devverse/
-├── client/            React app
-│   └── src/ components, pages, layouts, hooks, context, services, utils
+│
+├── client/
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       │   ├── common/
+│       │   └── dashboard/
+│       ├── config/
+│       ├── context/
+│       ├── layouts/
+│       ├── pages/
+│       │   └── public/
+│       ├── services/
+│       └── App.jsx
+│
 ├── server/
-│   ├── config/  controllers/  middleware/  models/  routes/
-│   ├── services/  validators/  utils/  scripts/  seed/  tests/
-│   ├── app.js  server.js
-├── render.yaml  .env.example  README.md  package.json
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── scripts/
+│   └── server.js
+│
+├── .gitignore
+└── README.md
 ```
 
-## Installation
+---
 
-Requires Node.js 20+ and a MongoDB database (Atlas free tier or local).
+# 🚀 Getting Started
+
+## Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- Git
+- MongoDB / MongoDB Atlas
+- Cloudinary account for media uploads
+
+---
+
+## 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url> devverse && cd devverse
-npm run install:all
-cp .env.example server/.env        # Windows: copy .env.example server\.env
+git clone https://github.com/abhishekyadav77/devverse.git
+cd devverse
 ```
 
-Edit `server/.env`, then run `npm run dev`. Client: http://localhost:5173, API: http://localhost:5000/api/health
+---
 
-## Environment variables
+# ⚙️ Backend Setup
 
-**Server (`server/.env`)**
-
-| Variable | Required | Description |
-|---|---|---|
-| `MONGO_URI` | yes | MongoDB connection string |
-| `JWT_SECRET` | yes | 32+ random characters (`node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"`) |
-| `CLIENT_URL` | yes in production | Exact https site address, no trailing slash. Used for CORS, CSRF, canonical links and the sitemap |
-| `NODE_ENV` | production | Set to `production` when deployed |
-| `PORT` | no | Defaults to 5000 (hosts set it automatically) |
-| `COOKIE_SAME_SITE` | no | `none` (default in production) or `lax` for same-parent-domain deployments |
-| `CLOUDINARY_*` | for uploads | Cloud name, API key and API secret |
-| `RESEND_API_KEY`, `EMAIL_FROM` | for password reset | Without them, reset emails fail in production |
-
-**Client (`client/.env`)**: `VITE_API_URL` (e.g. `https://api.example.com/api`; empty in development) and `VITE_SITE_URL` (your public site address).
-
-## Running locally
+## 2. Install Backend Dependencies
 
 ```bash
-npm run dev            # client + server
-npm run seed           # demo admin, writers, 12 posts, comments, likes, follows (never in production)
-npm test               # unit tests (no database needed)
-npm run smoke          # end-to-end API test against the running local server
-npm run recount        # repair like/comment/bookmark/follower counters
-npm run build          # production client build
+cd server
+npm install
 ```
 
-Demo logins after seeding use password `DemoPass123`, for example `admin@demo.devverse.test`.
-Promote any account to admin with `npm run make-admin --prefix server -- you@example.com`.
+## 3. Configure Backend Environment Variables
 
-## API documentation
+Create:
 
-Base URL `/api`. Success: `{ "success": true, "data": ... }` (lists add `pagination`). Error: `{ "success": false, "message": "..." }`.
-Lists accept `?page=&limit=`. Writes (POST, PUT, PATCH, DELETE) must send the header `X-Requested-With: XMLHttpRequest`.
-Access: **Public**, **User** (logged in), **Admin**.
+```text
+server/.env
+```
 
-| Method and path | Access | Purpose |
-|---|---|---|
-| `POST /auth/register`, `/auth/login` | Public | Create account, log in (sets cookie) |
-| `POST /auth/logout` | Public | Clear cookie |
-| `GET /auth/me` | User | Current user |
-| `POST /auth/forgot-password`, `/auth/reset-password` | Public | Password reset by email |
-| `PUT /auth/change-password` | User | Change password |
-| `GET /users/:username` | Public | Author profile, post count, follow state |
-| `PUT /users/profile` | User | Update profile |
-| `GET /users/bookmarks`, `/users/bookmarks/ids` | User | Saved articles |
-| `GET /users/:id/follow` | Public | Am I following? |
-| `POST`/`DELETE /users/:id/follow` | User | Follow, unfollow |
-| `GET /blogs` | Public | Live posts. Filters: `category`, `tag`, `author`, `sort=latest\|popular\|views` |
-| `GET /blogs/:slug` | Public | One article (drafts visible to owner/admin) |
-| `GET /blogs/mine`, `/blogs/mine/stats`, `/blogs/manage/:id` | User | Own posts, stats, editor data |
-| `POST /blogs`, `PUT`/`DELETE /blogs/:id` | User | Create, update, delete (owner or admin) |
-| `POST /blogs/:id/publish`, `/blogs/:id/unpublish` | User | Publish (optionally scheduled), unpublish |
-| `GET`/`POST`/`DELETE /blogs/:id/like` | Public / User | Like state, like, unlike |
-| `POST`/`DELETE /blogs/:id/bookmark` | User | Save, unsave |
-| `GET`/`POST /blogs/:id/comments` | Public / User | List with replies, add comment or reply |
-| `PUT`/`DELETE /comments/:id` | User | Edit (author), delete (author or admin) |
-| `POST`/`DELETE /comments/:id/like` | User | Like a comment |
-| `GET /notifications`, `/notifications/unread-count` | User | Notifications |
-| `PATCH /notifications/:id/read`, `/notifications/read-all` | User | Mark read |
-| `GET /categories`, `/categories/:slug` | Public | Categories with post counts |
-| `POST`/`PUT`/`DELETE /categories[/:id]` | Admin | Manage categories (`?reassignTo=` on delete) |
-| `GET /tags`, `/tags/popular`, `/tags/:slug` | Public | Tags |
-| `GET /search?q=&sort=` | Public | Search titles, content, tags, categories, authors |
-| `GET /home` | Public | Everything the home page needs |
-| `POST /newsletter` | Public | Subscribe |
-| `POST /uploads/image?purpose=avatar\|cover\|content` | User | Upload image (5 MB, JPG/PNG/WebP/GIF) |
-| `DELETE /uploads/avatar` | User | Remove profile photo |
-| `GET /admin/stats`, `/admin/analytics?days=` | Admin | Statistics and chart data |
-| `GET /admin/users`, `PATCH /admin/users/:id/suspend\|restore` | Admin | User moderation |
-| `GET /admin/posts`, `PATCH /admin/posts/:id/hide\|restore`, `DELETE /admin/posts/:id` | Admin | Post moderation |
-| `GET /admin/comments` | Admin | Comment list (delete via `DELETE /comments/:id`) |
-| `GET`/`PUT`/`DELETE /admin/tags[/:id]` | Admin | Tag management |
+Example:
 
-Outside `/api`: `GET /sitemap.xml`, `GET /robots.txt`, `GET /seo/blog/:slug` (crawler page), and `GET /api/health`.
+```env
+PORT=5000
 
-## Deployment
+MONGO_URI=your_mongodb_connection_string
 
-1. **MongoDB Atlas:** create a free cluster and a database user, allow network access, copy the connection string and add `/devverse` as the database name.
-2. **Cloudinary:** copy the cloud name, API key and API secret.
-3. **Resend:** verify your sending domain and create an API key.
-4. **API on Render:** New > Blueprint (uses `render.yaml`) or a Web Service with root directory `server`, build `npm ci`, start `npm start`, health check `/api/health`. Set the environment variables above.
-5. **Client on Vercel:** import the repo with root directory `client`. Set `VITE_API_URL` and `VITE_SITE_URL`. Replace `https://api.example.com` in `client/vercel.json` (4 places) with your API address.
-6. **Domains:** use one parent domain (`www.example.com` for the site, `api.example.com` for the API), set `CLIENT_URL` to the site address and `COOKIE_SAME_SITE=lax`. Redeploy both.
-7. **First admin:** register on the live site, then set that user's `role` to `admin` in Atlas (Browse Collections > users).
+JWT_SECRET=your_jwt_secret
 
-## Security
+CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+CLOUDINARY_API_KEY=your_cloudinary_api_key
+CLOUDINARY_API_SECRET=your_cloudinary_api_secret
 
-- Passwords hashed with bcrypt (12 rounds); login takes the same time for unknown and known emails
-- JWT in an HTTP-only, Secure cookie; HS256 pinned; sessions invalidated when the password changes
-- Server-side authorization on every protected route; ownership checks; suspended users blocked on every request
-- Zod validation on all input; HTML sanitized on save (server) and on render (client)
-- CSRF: custom header requirement plus Origin check; strict CORS to the site only
-- Helmet, strict CSP and security headers (Vercel), rate limits (global, login per IP and per account, uploads, search, comments)
-- MongoDB operator stripping, body size limits, upload validation by file signature, SVG blocked
-- Secrets only in environment variables
+CLIENT_URL=http://localhost:5173
+```
 
-## Future improvements
+> ⚠️ Never commit your `.env` file or real credentials to GitHub.
 
-- Email verification on sign-up and a real newsletter sender with unsubscribe links
-- Followers and following lists, an RSS feed, an archive action for posts
-- Redis for view deduplication and rate limits when running more than one server
-- OAuth login (GitHub, Google), two-factor authentication, account deletion and data export
-- Automated browser tests (Playwright) and CI on every pull request
-- Crawler pages for author, category and tag URLs
+## 4. Start the Backend
+
+```bash
+npm start
+```
+
+Backend:
+
+```text
+http://localhost:5000
+```
+
+---
+
+# 💻 Frontend Setup
+
+Open another terminal.
+
+## 5. Install Frontend Dependencies
+
+```bash
+cd client
+npm install
+```
+
+## 6. Configure Frontend Environment Variables
+
+Create:
+
+```text
+client/.env
+```
+
+Example:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+## 7. Start the Frontend
+
+```bash
+npm run dev
+```
+
+Frontend:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# 🧪 Testing
+
+DevVerse includes automated tests and smoke tests covering important application functionality.
+
+Run the test suite:
+
+```bash
+npm test
+```
+
+Run smoke tests:
+
+```bash
+npm run smoke
+```
+
+Build the frontend:
+
+```bash
+cd client
+npm run build
+```
+
+---
+
+# 🔐 Security & Environment Variables
+
+Sensitive credentials should never be committed to GitHub.
+
+Keep files such as these private:
+
+```text
+.env
+.env.local
+.env.production
+```
+
+Sensitive values include:
+
+- MongoDB credentials
+- JWT secrets
+- Cloudinary API secrets
+- Production API keys
+- Private configuration values
+
+For production deployment, configure environment variables directly in Vercel and Render.
+
+---
+
+# ☁️ Deployment
+
+DevVerse is designed for a modern cloud deployment architecture:
+
+```text
+                         GitHub
+                            │
+                 ┌──────────┴──────────┐
+                 │                     │
+                 ▼                     ▼
+              Vercel                 Render
+             Frontend               Backend
+                 │                     │
+                 └──────────┬──────────┘
+                            │
+                            ▼
+                      MongoDB Atlas
+                            │
+                            ▼
+                        Cloudinary
+```
+
+### Frontend
+
+Deploy the `client` directory using:
+
+**Vercel**
+
+### Backend
+
+Deploy the `server` directory using:
+
+**Render**
+
+### Database
+
+Use:
+
+**MongoDB Atlas**
+
+### Media Storage
+
+Use:
+
+**Cloudinary**
+
+---
+
+# 🖥️ Application Areas
+
+## Public
+
+- Home
+- Explore
+- Search
+- Categories
+- Blog/Post pages
+- Developer profiles
+- About DevVerse
+- About the Developer
+
+## Authenticated
+
+- Dashboard
+- Create post
+- Edit post
+- Drafts
+- Bookmarks
+- Notifications
+- Profile
+- Following system
+
+## Admin
+
+- Admin dashboard
+- Content management
+- User management
+- Protected administrative APIs
+
+---
+
+# 🔄 How DevVerse Works
+
+```text
+                 Discover
+                    │
+                    ▼
+                 Explore
+                    │
+                    ▼
+                   Read
+                    │
+                    ▼
+                Interact
+          ┌─────────┼─────────┐
+          ▼         ▼         ▼
+        Like     Comment   Bookmark
+          │         │         │
+          └─────────┼─────────┘
+                    │
+                    ▼
+                  Follow
+                    │
+                    ▼
+                  Write
+                    │
+                    ▼
+                 Publish
+                    │
+                    ▼
+                 Connect
+                    │
+                    ▼
+                   Grow
+```
+
+---
+
+# 🧠 What I Learned
+
+Building DevVerse provided practical experience across multiple areas of full-stack development.
+
+### Frontend
+
+- React application architecture
+- Component-based development
+- Client-side routing
+- Responsive UI development
+- State and context management
+- Rich-text editing
+- Animations
+
+### Backend
+
+- REST API development
+- Express.js architecture
+- Middleware
+- Authentication
+- Authorization
+- Role-based access control
+- API security
+
+### Database
+
+- MongoDB
+- Mongoose
+- Schema design
+- Data relationships
+- Querying and filtering
+- Data validation
+
+### Deployment
+
+- Git and GitHub
+- Environment variables
+- Vercel
+- Render
+- MongoDB Atlas
+- Cloudinary
+
+### Engineering
+
+- Debugging
+- Automated testing
+- Security testing
+- SEO
+- Application architecture
+- Production builds
+
+---
+
+# 🗺️ Roadmap
+
+## ✅ Completed
+
+- [x] MERN architecture
+- [x] Authentication
+- [x] Authorization
+- [x] User sessions
+- [x] Blog creation
+- [x] Blog editing
+- [x] Draft system
+- [x] Publishing workflow
+- [x] Categories
+- [x] Tags
+- [x] Likes
+- [x] Bookmarks
+- [x] Comments
+- [x] Comment replies
+- [x] Follow system
+- [x] Notifications
+- [x] Search
+- [x] Developer profiles
+- [x] Admin dashboard
+- [x] SEO support
+- [x] Security testing
+- [x] Frontend production build
+
+## 🚧 Future Improvements
+
+- [ ] Personalized developer feed
+- [ ] Trending content algorithm
+- [ ] Advanced developer analytics
+- [ ] Email notifications
+- [ ] Social sharing
+- [ ] Content recommendation system
+- [ ] Advanced moderation tools
+- [ ] Progressive Web App support
+- [ ] Further performance optimization
+
+---
+
+# 📸 Screenshots
+
+Screenshots can be added here after deployment.
+
+### 🏠 Home
+
+_Add homepage screenshot here_
+
+### 🔎 Explore
+
+_Add Explore page screenshot here_
+
+### ✍️ Blog Editor
+
+_Add Blog Editor screenshot here_
+
+### 📊 Dashboard
+
+_Add Dashboard screenshot here_
+
+### 👤 Developer Profile
+
+_Add Developer Profile screenshot here_
+
+---
+
+# 📌 Project Status
+
+DevVerse is an actively developed project.
+
+The current focus is building a complete developer blogging and community experience while continuously improving functionality, security, performance, SEO, and user experience.
+
+---
+
+# 👨‍💻 About the Developer
+
+## Abhishek Kumar Yadav
+
+**B.Tech CSE · Full-Stack Developer**
+
+I enjoy building full-stack applications, learning new technologies, solving programming problems, and turning ideas into useful software.
+
+My interests include:
+
+- Full-Stack Development
+- MERN Stack
+- Problem Solving
+- Software Engineering
+- Backend Development
+- Building Real-World Applications
+
+---
+
+# 🔗 Connect With Me
+
+<p>
+  <a href="https://github.com/abhishekyadav77">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+  </a>
+
+  <a href="https://www.linkedin.com/in/abhishek-yadav-mzp/">
+    <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
+
+  <a href="https://leetcode.com/u/abhishek_yadav_12/">
+    <img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" />
+  </a>
+</p>
+
+---
+
+# ⭐ Support
+
+If you find DevVerse interesting, consider giving the repository a ⭐ on GitHub.
+
+Your support helps motivate further development and improvements.
+
+---
+
+<div align="center">
+
+# ⚡ DevVerse
+
+### Learn · Build · Share · Connect
+
+Built with ❤️ by **Abhishek Kumar Yadav**
+
+</div>
