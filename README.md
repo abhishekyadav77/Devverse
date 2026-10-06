@@ -20,6 +20,10 @@
   <img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
 </p>
 
+
+### 🚀 Live Demo
+
+**https://devverse-three.vercel.app/**
 ---
 
 ## 🌐 About DevVerse
@@ -585,30 +589,6 @@ Building DevVerse provided practical experience across multiple areas of full-st
 - [ ] Further performance optimization
 
 ---
-
-# 📸 Screenshots
-
-Screenshots can be added here after deployment.
-
-### 🏠 Home
-
-_Add homepage screenshot here_
-
-### 🔎 Explore
-
-_Add Explore page screenshot here_
-
-### ✍️ Blog Editor
-
-_Add Blog Editor screenshot here_
-
-### 📊 Dashboard
-
-_Add Dashboard screenshot here_
-
-### 👤 Developer Profile
-
-_Add Developer Profile screenshot here_
 
 ---
 
