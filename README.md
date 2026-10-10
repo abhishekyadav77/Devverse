@@ -626,11 +626,11 @@ My interests include:
     <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
   </a>
 
-  <a href="https://www.linkedin.com/in/abhishek-yadav-mzp/">
+  <a href="https://www.linkedin.com/in/abhishekyadav77a/">
     <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
   </a>
 
-  <a href="https://leetcode.com/u/abhishek_yadav_12/">
+  <a href="https://leetcode.com/u/abhishekyadav77/">
     <img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black" alt="LeetCode" />
   </a>
 </p>
